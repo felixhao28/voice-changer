@@ -92,7 +92,7 @@ global config;
 [WaveIn, fs] = wavread(config.fileIn);
 axes(handles.axes1);
 plot(WaveIn);
-wavplay(WaveIn, fs, 'async');
+soundsc(WaveIn, fs);
 title('Input waveform')
 
 
@@ -100,7 +100,7 @@ title('Input waveform')
 function play_output_wav_push_button_Callback(hObject, eventdata, handles)
 global config;
 [WaveOut, fsOut] = wavread(config.fileOut);
-wavplay(WaveOut, fsOut);
+soundsc(WaveOut, fsOut);
 
 function pitchScaleValTxb_Callback(hObject, eventdata, handles)
 global config;
@@ -143,7 +143,7 @@ data.PitchContour = data.PitchContour(lag + 1 : length(data.PitchContour)); %shi
 PitchMarking(data.WaveIn, data.PitchContour, fs);
 
 wavwrite(data.waveOut, fs, config.fileOut);
-wavplay(data.waveOut, fs, 'async');
+soundsc(data.waveOut, fs);
 
 axes(handles.axes1);
 plot(data.WaveIn);
@@ -217,7 +217,7 @@ global config;
 [WaveOut, fsOut] = wavread(config.fileOut);
 axes(handles.axes2);
 plot(WaveOut);
-wavplay(WaveOut, fsOut, 'async');
+soundsc(WaveOut, fsOut);
 title('Output waveform')
 
 
